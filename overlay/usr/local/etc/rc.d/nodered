@@ -46,6 +46,7 @@ logfile="/var/log/${name}_daemon.log"
 : "${nodered_group:=nodered}"
 : "${nodered_config_dir:=/var/db/nodered}"
 : "${nodered_moss:=0}"
+: "${nodered_flows:=/var/db/nodered/flows_node.json}"
 
 export HOME="${nodered_config_dir}"
 export PATH="${PATH}:/usr/local/sbin:/usr/local/bin"
@@ -78,7 +79,7 @@ nodered_precmd() {
   install -g "${nodered_group}" -o "${nodered_user}" -- /dev/null "${pidfile}"
   install -g "${nodered_group}" -o "${nodered_user}" -- /dev/null "${logfile}"
 
-  rc_flags="-f -o ${logfile} -P ${pidfile} -p ${pidfile_child} ${node_red} -u ${nodered_config_dir}"
+  rc_flags="-f -o ${logfile} -P ${pidfile} -p ${pidfile_child} ${node_red} -u ${nodered_config_dir} ${nodered_flows}"
 }
 
 start_postcmd=${name}_poststart

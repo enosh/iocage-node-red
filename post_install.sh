@@ -1,6 +1,6 @@
 #!/bin/sh
 
-usr_id=1880
+usr_id=1035
 usr_name=nodered
 usr_home=/var/db/nodered
 
